@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antigravity-Guide-Book-V1</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#14182b;--mu:#5b6280;--bd:#e1e4f0;--a1:#5b5bf0;--a2:#0ea5a4;--a3:#f59e0b;--a4:#ec4899;--a5:#22c55e;--code:#10142a}
+@media(prefers-color-scheme:dark){:root{--bg:#0d1020;--card:#161a30;--tx:#eceffc;--mu:#9aa3c7;--bd:#262c4b;--code:#080a16}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--a1);text-decoration:none;font-weight:600}a:hover{text-decoration:underline}
+header{background:linear-gradient(135deg,#4338ca,#0ea5a4 60%,#f59e0b);color:#fff;padding:56px 24px 44px;text-align:center}
+header h1{margin:0;font-size:clamp(28px,5vw,48px)}header p{max-width:760px;margin:12px auto 0;opacity:.95}
+.badge{display:inline-block;background:rgba(255,255,255,.2);padding:3px 12px;border-radius:99px;font-size:13px;margin:4px}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--bd);padding:8px 12px;overflow-x:auto;white-space:nowrap}
+nav a{display:inline-block;padding:4px 10px;font-size:13px;border-radius:8px}nav a:hover{background:var(--bd);text-decoration:none}
+main{max-width:1080px;margin:0 auto;padding:24px 16px 60px}
+section{margin:36px 0;scroll-margin-top:56px}
+h2{font-size:26px;margin:0 0 4px;padding-left:12px;border-left:6px solid var(--c,var(--a1))}
+.sub{color:var(--mu);margin:0 0 14px 18px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--card);border:1px solid var(--bd);border-top:4px solid var(--c,var(--a1));border-radius:12px;padding:14px}
+.card h3{margin:0 0 6px;font-size:16px}.card p{margin:0;font-size:14px;color:var(--mu)}
+.tw{overflow-x:auto;border:1px solid var(--bd);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th{background:var(--c,var(--a1));color:#fff;text-align:left;padding:9px 12px}td{padding:9px 12px;border-top:1px solid var(--bd);vertical-align:top}
+tr:nth-child(even) td{background:rgba(127,127,160,.06)}
+.tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;font-weight:700;color:#fff;background:var(--a2)}
+.tag.o{background:var(--a5)}.tag.c{background:var(--a1)}.tag.x{background:var(--a3)}.tag.r{background:var(--a4)}
+pre{background:var(--code);color:#d6dcff;padding:14px;border-radius:10px;overflow-x:auto;font-size:13px;margin:10px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.flow span{background:var(--card);border:2px solid var(--c,var(--a1));padding:6px 12px;border-radius:10px;font-weight:700;font-size:14px}
+.flow i{color:var(--mu);font-style:normal}
+.note{background:rgba(245,158,11,.12);border:1px solid var(--a3);border-radius:10px;padding:12px 14px;font-size:14px;margin:12px 0}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:24px}
+</style></head><body>
+<header><h1>🪐 Antigravity-Guide-Book-V1</h1>
+<p>From first install to a full agent team: the tools, skills, MCP servers, workflows and safeguards that get the most out of Google Antigravity. Built from the awesome-antigravity repo, the ai-engineering-ecosystem repo, your saved docs, and fresh research (Nov 2026).</p>
+<span class="badge">Beginner → Pro</span><span class="badge">Sequential</span><span class="badge">Every item linked</span></header>
+<nav><a href="#s0">0 Read first</a><a href="#s1">1 Basics</a><a href="#s2">2 Path</a><a href="#s3">3 Config layers</a><a href="#s4">4 Skills</a><a href="#s5">5 MCP</a><a href="#s6">6 Planning</a><a href="#s7">7 Memory</a><a href="#s8">8 Design</a><a href="#s9">9 Security</a><a href="#s10">10 Launch/SEO</a><a href="#s11">11 Roadmap</a><a href="#s12">12 Pitfalls</a><a href="#s13">Sources</a></nav>
+<main>
+
+<section id="s0" style="--c:var(--a3)"><h2>0 · Read this first</h2><p class="sub">Honest scope: what this book is and isn't</p>
+<div class="note"><b>No tool makes Antigravity "a million times better".</b> Real gains come from stacking five things: clear rules, reusable skills, the right MCP connections, a plan-first workflow, and security checks. This book gives you each, in order.<br><br>
+<b>Verification:</b> repo and docs links were read or surfaced in search this session. Star counts, skill counts and prices change fast, so figures are approximate. Links from your Notion, Google Docs and Substack files are listed but could not be opened here, so check them yourself (tagged <span class="tag x">unchecked</span>). I left out <code>cursor-free-vip</code> (a licence-bypass tool, so a legal and malware risk) and dropped the private <code>mcp_token</code> parts of two URLs in your list.</div>
+<div class="grid"><div class="card" style="--c:var(--a5)"><h3>🟢 Level 0 · Beginner</h3><p>Install, first prompt, review artifacts. Sections 1–2.</p></div><div class="card" style="--c:var(--a1)"><h3>🔵 Level 1 · Builder</h3><p>Rules, workflows, skills. Sections 3–4.</p></div><div class="card" style="--c:var(--a4)"><h3>🟣 Level 2 · Engineer</h3><p>MCP, specs, memory, design. Sections 5–8.</p></div><div class="card" style="--c:var(--a3)"><h3>🟠 Level 3 · Pro</h3><p>Security, launch, multi-agent teams. Sections 9–12.</p></div></div></section>
+
+<section id="s1" style="--c:var(--a1)"><h2>1 · Antigravity in one page</h2><p class="sub">Google's agent-first development platform</p>
+<div class="tw"><table><tr><th>Surface</th><th>What it is</th><th>Use it when</th><th>Link</th></tr>
+<tr><td><b>Antigravity IDE</b></td><td>Editor with an Agent Manager built in (toggle with Ctrl/Cmd+E)</td><td>You want to read and fix code while agents work</td><td><a href="https://antigravity.google">antigravity.google</a></td></tr>
+<tr><td><b>Antigravity 2.0 desktop app</b></td><td>Central hub for orchestrating multiple agents in parallel (announced at Google I/O, May 2026)</td><td>Running several tasks at once, scheduled background tasks</td><td><a href="https://techcrunch.com/2026/05/19/google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool/">TechCrunch</a></td></tr>
+<tr><td><b>Antigravity CLI</b></td><td>Terminal interface for agents; Gemini CLI users are encouraged to migrate</td><td>Terminal workflows, servers, CI</td><td><a href="https://thenewstack.io/google-io-antigravity-codemender-ai-agentic/?p=22823941">The New Stack</a></td></tr>
+<tr><td><b>Antigravity SDK</b></td><td>Programmatic access to the same agent harness</td><td>Building your own custom agents</td><td><a href="https://antigravity.google/docs">Docs</a></td></tr>
+<tr><td><b>Official docs / updates / issues</b></td><td>Guides, changelog, bug tracker</td><td>Always check here first</td><td><a href="https://antigravity.google/docs">Docs</a> · <a href="https://antigravity.google/updates">Updates</a> · <a href="https://issues.antigravity.google">Issues</a></td></tr></table></div>
+<p>Plans and limits change often (a $100 AI Ultra tier with 5× Pro limits was announced at I/O). Check current pricing on the official site.</p></section>
+
+<section id="s2" style="--c:var(--a5)"><h2>2 · The learning path</h2><p class="sub">Follow in order; each step unlocks the next</p>
+<div class="flow"><span>1 Install & sign in</span><i>→</i><span>2 First task</span><i>→</i><span>3 Review artifacts</span><i>→</i><span>4 Add rules</span><i>→</i><span>5 Add skills</span><i>→</i><span>6 Connect MCP</span><i>→</i><span>7 Multi-agent</span></div>
+<div class="tw"><table><tr><th>Step</th><th>Do this</th><th>Learn from</th></tr>
+<tr><td>1–3</td><td>Install, open the Agent Manager, give one small task, then leave comments on the agent's plan and screenshots instead of restarting.</td><td><a href="https://aimeetcode.substack.com/p/antigravity-full-guide-from-install">Full guide: install → rules → MCP</a></td></tr>
+<tr><td>4–6</td><td>Write rules before the first big prompt, then permissions, skills and MCP.</td><td><a href="https://pasqualepillitteri.it/en/news/29239/how-to-use-google-antigravity-complete-guide">8-phase agent workflow guide</a></td></tr>
+<tr><td>7</td><td>Build a PM → Frontend → QA → DevOps team with agents.md, skills and a slash-command workflow.</td><td><a href="https://codelabs.developers.google.com/autonomous-ai-developer-pipelines-antigravity">Google codelab: autonomous developer pipelines</a></td></tr>
+<tr><td>Any</td><td>Tutorials, rules library, skills library, troubleshooting, forum.</td><td><a href="https://agentpedia.codes/antigravity">Antigravity hub</a> · <a href="https://hackernoon.com/the-ultimate-guide-to-google-antigravity-20-complete-automation-without-any-code">Hackernoon 2.0 guide</a></td></tr></table></div></section>
+
+<section id="s3" style="--c:var(--a4)"><h2>3 · The customization layers</h2><p class="sub">This is where most of the quality gain comes from</p>
+<div class="tw"><table><tr><th>Layer</th><th>What it does</th><th>Where it lives</th></tr>
+<tr><td><b>Rules</b></td><td>Persistent system-style instructions (coding standards, stack, "never do X")</td><td>Global <code>~/.gemini/GEMINI.md</code> · Workspace <code>.agents/rules/</code> (older guides say <code>.agent/rules/</code>)</td></tr>
+<tr><td><b>Workflows</b></td><td>Saved step sequences you trigger on demand (deploy, PR reply, test cycle)</td><td><code>.agents/workflows/</code> · global <code>~/.gemini/antigravity/global_workflows/</code></td></tr>
+<tr><td><b>Skills</b></td><td>SKILL.md folders; the agent sees only name and description until a skill is needed</td><td><code>.agents/skills/&lt;name&gt;/SKILL.md</code></td></tr>
+<tr><td><b>agents.md</b></td><td>Defines a named custom agent with its own model, permissions and MCP access; newer IDEs also read AGENTS.md</td><td>Project root / <code>.agents/</code></td></tr>
+<tr><td><b>MCP</b></td><td>Connects the agent to databases, browsers, GitHub, Firebase and more</td><td>Agent panel → MCP Servers → View raw config (<code>mcp_config.json</code>)</td></tr></table></div>
+<p>Each Rules or Workflows file is reportedly capped at about 12,000 characters, so split long style guides. Folder names have changed between versions: confirm in the <a href="https://antigravity.google/docs">official docs</a> for yours. Sources: <a href="https://thepromptshelf.dev/blog/google-antigravity-agents-md-rules-guide-2026">Prompt Shelf guide</a>, <a href="https://aimeetcode.substack.com/p/antigravity-full-guide-from-install">Substack guide</a>.</p>
+<pre># Starter workspace rule (.agents/rules/stack.md)
+- Stack: TypeScript, React, Tailwind. Small components in /src/components.
+- Plan first: write a plan and wait for my approval on anything over 3 files.
+- Write tests for every new function. Never commit secrets; use .env.
+- Never run destructive commands (rm -rf, DROP, force-push) without asking.</pre></section>
+
+<section id="s4" style="--c:var(--a2)"><h2>4 · Skills & plugin libraries</h2><p class="sub">Install these first for the biggest jump</p>
+<div class="tw"><table><tr><th>Tool</th><th>What you get</th><th>Level</th><th>Install / link</th></tr>
+<tr><td><b>Antigravity Awesome Skills</b></td><td>Thousands of installable skills (counts vary by release; roughly 1,800+) with role bundles and workflows, for Antigravity, Claude Code, Cursor, Codex, Gemini CLI</td><td><span class="tag o">Start</span></td><td><code>npx antigravity-awesome-skills</code> · <a href="https://github.com/sickn33/antigravity-awesome-skills">repo</a></td></tr>
+<tr><td><b>Superpowers</b></td><td>Enforces brainstorm → plan → TDD → review on every session</td><td><span class="tag c">Pro habit</span></td><td><a href="https://github.com/obra/superpowers">obra/superpowers</a></td></tr>
+<tr><td><b>Get Shit Done (GSD)</b></td><td>Spec-driven: interviews you, plans, then executes phase by phase with verification</td><td><span class="tag c">Builder</span></td><td><code>npx get-shit-done-cc</code> · <a href="https://github.com/gsd-build/get-shit-done">gsd-build</a></td></tr>
+<tr><td><b>Ralph</b></td><td>Autonomous loop that works through a task list until done</td><td><span class="tag x">Advanced</span></td><td><a href="https://github.com/snarktank/ralph">snarktank/ralph</a></td></tr>
+<tr><td><b>Karpathy-style skills</b></td><td>Coding guidelines distilled from Andrej Karpathy's observations on LLM coding pitfalls</td><td><span class="tag o">Start</span></td><td><a href="https://github.com/forrestchang/andrej-karpathy-skills">forrestchang</a></td></tr>
+<tr><td><b>UI/UX Pro Max</b></td><td>Design-system generator: styles, palettes, font pairings across stacks</td><td><span class="tag c">Builder</span></td><td><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill">repo</a></td></tr>
+<tr><td><b>Obsidian Skills</b></td><td>Manage an Obsidian vault as an AI second brain</td><td><span class="tag c">Builder</span></td><td><a href="https://github.com/kepano/obsidian-skills">kepano</a></td></tr>
+<tr><td><b>n8n-MCP</b></td><td>Deep knowledge of n8n nodes for building automations</td><td><span class="tag x">Advanced</span></td><td><a href="https://github.com/czlonkowski/n8n-mcp">repo</a></td></tr>
+<tr><td><b>Awesome Claude Code</b></td><td>Master directory of skills, hooks, plugins (many reusable in Antigravity)</td><td><span class="tag o">Browse</span></td><td><a href="https://github.com/hesreallyhim/awesome-claude-code">repo</a></td></tr>
+<tr><td><b>Claude Cookbooks</b></td><td>Worked examples for agents, tools, RAG</td><td><span class="tag c">Learn</span></td><td><a href="https://github.com/anthropics/claude-cookbooks">anthropics</a></td></tr>
+<tr><td><b>awesome-antigravity</b></td><td>Community list: official links, themes, prompts, Discord</td><td><span class="tag o">Start</span></td><td><a href="https://github.com/MichaelZelbel/awesome-antigravity">repo</a> · <a href="https://discord.gg/X3um7vxX8J">Discord</a></td></tr></table></div>
+<div class="note">Skills are instructions that run with your permissions. <b>Read a skill before installing it</b>, prefer widely used repos, and avoid installing hundreds at once: more skills means more noise in discovery. Start with 5–10.</div></section>
+
+<section id="s5" style="--c:var(--a3)"><h2>5 · MCP servers: give the agent hands</h2><p class="sub">Add via the agent panel's MCP Servers → View raw config</p>
+<div class="tw"><table><tr><th>Need</th><th>Server</th><th>What the agent can do</th></tr>
+<tr><td>Up-to-date library docs</td><td><a href="https://github.com/upstash/context7">Context7</a></td><td>Pulls current docs so code stops using outdated APIs</td></tr>
+<tr><td>Browser testing</td><td><a href="https://github.com/microsoft/playwright-mcp">Playwright MCP</a></td><td>Drives a browser to test and screenshot your app</td></tr>
+<tr><td>Code hosting</td><td><a href="https://github.com/github/github-mcp-server">GitHub MCP</a></td><td>Issues, PRs, repo search</td></tr>
+<tr><td>Backend / DB</td><td>Firebase, Supabase, Postgres MCPs (see <a href="https://agentpedia.codes/antigravity">hub</a>)</td><td>Query live data to write accurate SQL</td></tr>
+<tr><td>Automation</td><td><a href="https://github.com/czlonkowski/n8n-mcp">n8n-MCP</a></td><td>Build and edit workflows</td></tr></table></div>
+<p>Least privilege: give each server read-only access first, and scope tokens narrowly. More: your catalogue's <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/model-gateways-and-agent-integrations.md">integrations page</a> and <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/web-research-and-browser-automation.md">web research and browser automation</a>.</p></section>
+
+<section id="s6" style="--c:var(--a1)"><h2>6 · Plan-first workflow (the 8-step loop)</h2><p class="sub">Use for every feature</p>
+<div class="flow"><span>Idea</span><i>→</i><span>Spec</span><i>→</i><span>Plan (approve)</span><i>→</i><span>Build</span><i>→</i><span>Test</span><i>→</i><span>Review</span><i>→</i><span>Security</span><i>→</i><span>Ship</span></div>
+<pre>Prompt template:
+"Interview me about this feature. Then write SPEC.md (goals, non-goals,
+acceptance tests). Wait for approval. Then write PLAN.md with small
+steps. Build one step at a time and run tests after each."</pre>
+<p>Tools for this stage: GSD, Superpowers (section 4) and your <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/spec-driven-development-and-planning.md">spec-driven planning catalogue</a>. Your own saved docs also cover this: <a href="https://tungsten-client-0be.notion.site/Antigravity-AI-Development-System-2d03f76606038014af01d1ac6c54c35b">Antigravity AI Development System</a> <span class="tag x">unchecked</span>, <a href="https://shaded-season-2f0.notion.site/Idea-Live-App-Workflow-System-30c3ad7d4673804a8b09f61bc78a604d">Idea → Live App Workflow</a> <span class="tag x">unchecked</span>, <a href="https://shaded-season-2f0.notion.site/Architecture-Stress-Test-Prompt-Pack-30c3ad7d46738020848fd2394ff4cd7c">Architecture Stress-Test Prompt Pack</a> <span class="tag x">unchecked</span>.</p></section>
+
+<section id="s7" style="--c:var(--a2)"><h2>7 · Memory & context</h2><p class="sub">Stop re-explaining your project every session</p>
+<div class="grid"><div class="card"><h3>Project memory file</h3><p>Keep a short ARCHITECTURE.md and DECISIONS.md; reference them from your rules.</p></div>
+<div class="card" style="--c:var(--a4)"><h3>Claude-Mem</h3><p>Captures sessions and re-injects context (built for Claude Code). <a href="https://github.com/thedotmack/claude-mem">repo</a></p></div>
+<div class="card" style="--c:var(--a3)"><h3>Obsidian vault</h3><p>Notes as long-term brain via <a href="https://github.com/kepano/obsidian-skills">Obsidian Skills</a>.</p></div>
+<div class="card" style="--c:var(--a5)"><h3>Context tools</h3><p>Semantic code retrieval and context packing: <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/code-intelligence-and-context-engineering.md">catalogue page</a>.</p></div></div></section>
+
+<section id="s8" style="--c:var(--a4)"><h2>8 · Design & frontend quality</h2><p class="sub">Avoid generic "AI slop" UI</p>
+<ul><li>Install <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill">UI/UX Pro Max</a>, then ask the agent to generate a design system (colors, type, spacing) <i>before</i> building screens.</li>
+<li>Use browser MCP to screenshot, then comment directly on the screenshot to steer the agent.</li>
+<li>Catalogue: <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/design-engineering-and-visualization.md">design engineering and visualization</a>, <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/design-and-frontend.md">design and frontend</a>.</li>
+<li>Your references: <a href="https://techie007.substack.com/p/how-to-build-beautiful-apps-and-websites">Build beautiful apps and websites</a> <span class="tag x">unchecked</span>.</li></ul></section>
+
+<section id="s9" style="--c:var(--a4)"><h2>9 · Security: agents write code fast, so check it faster</h2><p class="sub">Never skip before launch</p>
+<div class="tw"><table><tr><th>Risk</th><th>Guard</th></tr>
+<tr><td>Destructive commands</td><td>Restrict command execution policy; require approval for deletes, deploys, force-push</td></tr>
+<tr><td>Secrets in code</td><td>.env only, secret scanning, rotate anything pasted into a prompt</td></tr>
+<tr><td>Malicious skills / MCP</td><td>Read before install; minimal token scopes; pin versions</td></tr>
+<tr><td>Vulnerable generated code</td><td>Run your 70-check launch filter, dependency audit, and a security-review pass (see <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/security-review-and-agent-guardrails.md">guardrails catalogue</a>)</td></tr></table></div>
+<p>Your uploaded <i>Vibe-Coded App Security Part 4: Full 70-Check Launch Filter</i> includes a copy/paste audit prompt: run it on every project before launch. Google also announced expanded CodeMender patching at I/O (<a href="https://thenewstack.io/google-io-antigravity-codemender-ai-agentic/?p=22823941">source</a>).</p></section>
+
+<section id="s10" style="--c:var(--a5)"><h2>10 · Launch & SEO checklist</h2><p class="sub">From your uploaded SEO guide</p>
+<div class="grid"><div class="card"><h3>1 Index</h3><p>Google Search Console, Bing Webmaster Tools, sitemap.xml, robots.txt</p></div><div class="card" style="--c:var(--a2)"><h3>2 Instant ping</h3><p>IndexNow key file and ping on publish</p></div><div class="card" style="--c:var(--a3)"><h3>3 Meta</h3><p>Unique title (&lt;60 chars) and description (&lt;160), canonical, viewport</p></div><div class="card" style="--c:var(--a4)"><h3>4 Share</h3><p>Open Graph + Twitter card, 1200×630 image</p></div><div class="card" style="--c:var(--a1)"><h3>5 Speed</h3><p>LCP &lt;2.5s, CLS &lt;0.1, INP good, mobile-first</p></div></div></section>
+
+<section id="s11" style="--c:var(--a3)"><h2>11 · 30-day mastery roadmap</h2>
+<div class="tw"><table><tr><th>Week</th><th>Goal</th><th>Checkpoint</th></tr>
+<tr><td>1</td><td>Install, 3 small tasks, write global rules</td><td>Agent follows your standards without reminders</td></tr>
+<tr><td>2</td><td>Add 5–10 skills (Awesome Skills, Superpowers, Karpathy), one workflow</td><td>/command runs a full test-and-fix cycle</td></tr>
+<tr><td>3</td><td>Connect Context7, Playwright, GitHub MCP; spec-first with GSD</td><td>Ship a feature from SPEC.md with passing tests</td></tr>
+<tr><td>4</td><td>Multi-agent team, security pass, SEO launch checklist</td><td>Live app with audit and index checks complete</td></tr></table></div></section>
+
+<section id="s12" style="--c:var(--a4)"><h2>12 · Common pitfalls</h2>
+<div class="grid"><div class="card"><h3>Too many skills</h3><p>Noise lowers accuracy. Curate.</p></div><div class="card" style="--c:var(--a3)"><h3>No plan approval</h3><p>Big edits without a reviewed plan.</p></div><div class="card" style="--c:var(--a2)"><h3>Giant rules files</h3><p>Past the size cap, parts are ignored.</p></div><div class="card" style="--c:var(--a5)"><h3>Blind trust</h3><p>Test and review everything it writes.</p></div></div></section>
+
+<section id="s13" style="--c:var(--a1)"><h2>Sources & your repo</h2>
+<p>Your catalogue: <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem">ai-engineering-ecosystem</a> · <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/MASTER-CATALOG.md">Master catalogue</a> · <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/skill-engineering-and-agent-instructions.md">Skill engineering</a> · <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/coding-agent-clis-and-harnesses.md">Coding agent CLIs</a> · <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem/blob/main/catalog/agent-workspaces-and-orchestration.md">Agent workspaces</a>. Also from your list: <a href="https://github.com/public-apis/public-apis">public-apis</a>, <a href="https://github.com/steipete/CodexBar">CodexBar</a>, <a href="https://github.com/btouchard/herald">Herald</a>.</p></section>
+</main><footer>Antigravity-Guide-Book-V1 · compiled 14 Nov 2026 · verify versions, prices and folder names in the official docs</footer>
+</body></html>

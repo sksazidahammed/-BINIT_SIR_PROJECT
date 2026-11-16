@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "forensic-assessment"
+version = "0.1.0"
+description = "Single-image forensic assessment combining provenance analysis with synthetic-image detection."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+forensic = "forensic.cli:app"

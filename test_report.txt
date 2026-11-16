@@ -1,0 +1,131 @@
+========================================================================
+SINGLE-IMAGE FORENSIC ASSESSMENT REPORT
+========================================================================
+Input file   : tests\data\test_valid_jpeg.jpg
+Report time  : 2026-11-14T23:53:59.226222+00:00
+Report ver   : 1.0
+
+IMPORTANT: This report never states whether an image is 'real' or 'fake'.
+           Output states: indicated / not_indicated / inconclusive / verified / not_assessed
+
+========================================================================
+MODULE: M1_IDENTITY  |  Status: completed
+========================================================================
+OBSERVATIONS:
+  sha256: f0ad43f875ed9e5934fd189148638101dea30ad344a2c0b2a889df04736bb41b
+  file_size_bytes: 826
+  width_px: 100
+  height_px: 100
+  total_pixels: 10000
+  pillow_format: JPEG
+  pillow_mode: RGB
+  n_frames: 1
+
+INTERPRETATION:
+  file_identity: verified
+  note: Hash computed from original bytes. Format detected by Pillow.
+
+LIMITATIONS FOR THIS MODULE:
+  - SHA-256 identifies the file bytes, not the depicted content.
+  - A hash does not prove authenticity or capture date.
+  - Format detection is by magic bytes; a deliberately crafted file could fool it.
+
+========================================================================
+MODULE: M2_METADATA  |  Status: completed
+========================================================================
+OBSERVATIONS:
+  make: None
+  model: None
+  software: None
+  datetime_original: None
+  datetime_digitized: None
+  modify_date: None
+  image_width_declared: 100
+  image_height_declared: 100
+  has_gps: False
+  has_thumbnail: False
+  iptc_source: None
+  xmp_creator_tool: None
+  xmp_history: None
+  file_type: JPEG
+  mime_type: image/jpeg
+  exiftool_version: 13.61
+  raw_field_count: 24
+
+INTERPRETATION:
+  metadata_state: present
+  timestamp_consistency: not_checked
+  note: Metadata presence/absence noted. No authenticity claim is made.
+
+LIMITATIONS FOR THIS MODULE:
+  - Absent metadata is not proof of manipulation.
+  - Metadata can be edited without altering image pixels.
+  - ExifTool version affects which fields are extracted.
+  - GPS coordinates reported as present/absent only — no location data stored.
+  - Thumbnail mismatch may indicate editing but is not conclusive.
+
+========================================================================
+MODULE: M3_C2PA  |  Status: completed
+========================================================================
+OBSERVATIONS:
+  c2pa_state: absent
+  manifest_count: 0
+
+INTERPRETATION:
+  c2pa_state: absent
+  note: No C2PA manifest present. Absence is uninformative — it does not indicate manipulation.
+
+LIMITATIONS FOR THIS MODULE:
+  - A valid C2PA manifest does not prove the depicted event occurred.
+  - A valid manifest does not prove the image was not edited before signing.
+  - A missing manifest is 'absent' — it is not evidence of manipulation.
+  - Validation uses the trust list at the time of running; revoked certificates may not be detected if CRL is unavailable.
+  - Test certificates (c2pa-python test assets, Apache-2.0) are NOT real-world trust anchors. Results for test assets do not reflect real-world provenance.
+  - c2pa-python version 0.39.0: see requirements.txt.
+
+========================================================================
+MODULE: M4_COMPRESSION  |  Status: completed
+========================================================================
+OBSERVATIONS:
+  format: JPEG
+  mode: RGB
+  width_px: 100
+  height_px: 100
+  brightness_mean: 84.6667
+  contrast_std: 119.7367
+  saturation_mean: 119.7367
+  clipping_fraction_low: 1.0
+  clipping_fraction_high: 0.0
+  jpeg_quant_tables_direct: [[5, 3, 4, 4, 4, 3, 5, 4, 4, 4, 5, 5, 5, 6, 7, 12, 8, 7, 7, 7, 7, 15, 11, 11, 9, 12, 17, 15, 18, 18, 17, 15, 17, 17, 19, 22, 28, 23, 19, 20, 26, 21, 17, 17, 24, 33, 24, 26, 29, 29, 31, 31, 31, 19, 23, 34, 36, 34, 30, 36, 28, 30, 31, 30], [5, 5, 5, 7, 6, 7, 14, 8, 8, 14, 30, 20, 17, 20, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]]
+  jpeg_quant_tables_raster: [[5, 3, 3, 5, 7, 12, 15, 18, 4, 4, 4, 6, 8, 17, 18, 17, 4, 4, 5, 7, 12, 17, 21, 17, 4, 5, 7, 9, 15, 26, 24, 19, 5, 7, 11, 17, 20, 33, 31, 23, 7, 11, 17, 19, 24, 31, 34, 28, 15, 19, 23, 26, 31, 36, 36, 30, 22, 28, 29, 29, 34, 30, 31, 30], [5, 5, 7, 14, 30, 30, 30, 30, 5, 6, 8, 20, 30, 30, 30, 30, 7, 8, 17, 30, 30, 30, 30, 30, 14, 20, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]]
+  jpeg_quant_table_count_direct: 2
+  jpeg_quality_estimate: 83
+  jpeg_pillow_quant_table_0: [5, 3, 3, 5, 7, 12, 15, 18, 4, 4, 4, 6, 8, 17, 18, 17, 4, 4, 5, 7, 12, 17, 21, 17, 4, 5, 7, 9, 15, 26, 24, 19, 5, 7, 11, 17, 20, 33, 31, 23, 7, 11, 17, 19, 24, 31, 34, 28, 15, 19, 23, 26, 31, 36, 36, 30, 22, 28, 29, 29, 34, 30, 31, 30]
+  jpeg_pillow_table_match_direct: True
+
+INTERPRETATION:
+  compression_characteristics: recorded
+  quality_estimate: 83
+  note: JPEG quality is an estimate. No authenticity claim is made.
+
+LIMITATIONS FOR THIS MODULE:
+  - JPEG quality estimate is an approximation based on quantisation tables.
+  - Colour histograms and statistics describe the image, not its provenance.
+  - No authenticity claim is made from compression characteristics alone.
+  - Quality metrics do not prove whether an image has been re-compressed.
+  - PNG analysis does not include quantisation tables (PNG is lossless).
+
+========================================================================
+MANDATORY SYSTEM-WIDE LIMITATIONS (apply to all findings above)
+========================================================================
+  - Absent metadata is not proof of manipulation.
+  - Detectors can be wrong, especially on unseen generators and processed images.
+  - Screenshots and repeated processing can erase traces.
+  - A valid C2PA manifest does not prove an event.
+  - A hash does not prove authenticity.
+  - Heatmaps are indications, not exact pixels.
+  - Results hold only for our evaluation data.
+  - The system is not approved for evidentiary use.
+  - The benefit of combining the two functions is unproven until tested.
+
+========================================================================

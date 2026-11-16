@@ -1,0 +1,14 @@
+# Single-Image Forensic Assessment — pinned dependencies
+# Licences: Pillow=MIT-CMU, opencv-python=Apache-2.0, numpy=BSD-3-Clause,
+#            scikit-image=BSD-3-Clause, typer=MIT, pytest=MIT,
+#            c2pa-python=MIT/Apache-2.0
+Pillow==12.1.0
+opencv-python==4.13.0.92
+numpy==2.4.2
+scikit-image==0.26.0
+typer==0.29.1
+pytest==9.2.0
+c2pa-python==0.39.0
+# ExifTool is an EXTERNAL binary dependency — NOT a Python package.
+# Install from: https://exiftool.org/
+# Ensure it is on your system PATH. Version tested: TBD (see docs/06_TECHNICAL_DECISIONS.md)

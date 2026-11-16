@@ -1,0 +1,14 @@
+# Configuration for Single-Image Forensic Assessment
+# Edit limits here — do NOT hard-code them in module source files.
+max_file_bytes: 52428800      # 50 MB limit
+max_pixels: 100000000         # 100 megapixels limit
+timeout_seconds: 30           # ExifTool subprocess timeout
+
+supported_formats:            # Formats accepted at Stage 0
+  - JPEG
+  - PNG
+
+# ExifTool binary path.
+# Installed via: winget install OliverBetz.ExifTool (version 13.61, 2026-11-15)
+# If null, the system PATH is searched first; fall back to this path if PATH lookup fails.
+exiftool_path: "C:/Users/sksaz/AppData/Local/Programs/ExifTool/ExifTool.exe"

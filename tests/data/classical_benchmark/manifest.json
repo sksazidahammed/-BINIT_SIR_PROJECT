@@ -1,0 +1,82 @@
+[
+  {
+    "filename": "authentic_camera.jpg",
+    "label_overall": "authentic",
+    "double_jpeg": false,
+    "resampled": false,
+    "copy_move": false,
+    "source": "skimage.data.camera (BSD-3)"
+  },
+  {
+    "filename": "authentic_astronaut.jpg",
+    "label_overall": "authentic",
+    "double_jpeg": false,
+    "resampled": false,
+    "copy_move": false,
+    "source": "skimage.data.astronaut (BSD-3)"
+  },
+  {
+    "filename": "authentic_chelsea.jpg",
+    "label_overall": "authentic",
+    "double_jpeg": false,
+    "resampled": false,
+    "copy_move": false,
+    "source": "skimage.data.chelsea (BSD-3)"
+  },
+  {
+    "filename": "authentic_coffee.jpg",
+    "label_overall": "authentic",
+    "double_jpeg": false,
+    "resampled": false,
+    "copy_move": false,
+    "source": "skimage.data.coffee (BSD-3)"
+  },
+  {
+    "filename": "double_jpeg_camera.jpg",
+    "label_overall": "manipulated",
+    "double_jpeg": true,
+    "resampled": false,
+    "copy_move": false,
+    "source": "skimage.data.camera Q1=50, Q2=85"
+  },
+  {
+    "filename": "double_jpeg_astronaut.jpg",
+    "label_overall": "manipulated",
+    "double_jpeg": true,
+    "resampled": false,
+    "copy_move": false,
+    "source": "skimage.data.astronaut Q1=50, Q2=85"
+  },
+  {
+    "filename": "resampled_camera.png",
+    "label_overall": "manipulated",
+    "double_jpeg": false,
+    "resampled": true,
+    "copy_move": false,
+    "source": "skimage.data.camera scaled 1.35x INTER_LINEAR"
+  },
+  {
+    "filename": "resampled_astronaut.png",
+    "label_overall": "manipulated",
+    "double_jpeg": false,
+    "resampled": true,
+    "copy_move": false,
+    "source": "skimage.data.astronaut scaled 1.35x INTER_LINEAR"
+  },
+  {
+    "filename": "copymove_astronaut.png",
+    "label_overall": "manipulated",
+    "double_jpeg": false,
+    "resampled": false,
+    "copy_move": true,
+    "source": "skimage.data.astronaut cloned patch (80,80) to (220,220)"
+  },
+  {
+    "filename": "copymove_coffee.png",
+    "label_overall": "manipulated",
+    "double_jpeg": false,
+    "resampled": false,
+    "copy_move": true,
+    "source": "skimage.data.coffee cloned patch (80,80) to (220,220)"
+  }
+]

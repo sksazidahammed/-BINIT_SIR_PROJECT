@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity-Guide-Book-V1</title>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --surface: #111827;
+            --surface-2: #1a2233;
+            --border: #273449;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #22d3ee;
+            --accent-2: #a78bfa;
+            --accent-3: #34d399;
+            --accent-4: #f59e0b;
+            --accent-5: #f472b6;
+            --link: #67e8f9;
+            --code-bg: #0f172a;
+            --radius: 12px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        .hero p { color: var(--muted); font-size: 1.15rem; max-width: 720px; margin: 0 auto; }
+        .badge-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+        .badge {
+            display: inline-block; padding: 4px 14px; border-radius: 999px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em;
+            border: 1px solid var(--border); color: var(--muted);
+        }
+        .badge.cyan { border-color: var(--accent); color: var(--accent); }
+        .badge.violet { border-color: var(--accent-2); color: var(--accent-2); }
+        .badge.green { border-color: var(--accent-3); color: var(--accent-3); }
+
+        /* TOC */
+        .toc {
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 28px 32px; margin: 40px 0;
+        }
+        .toc h2 { font-size: 1.1rem; color: var(--accent); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em; }
+        .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 24px; }
+        .toc-grid a { color: var(--link); text-decoration: none; font-size: 0.92rem; padding: 4px 0; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        .toc-grid a:hover { border-bottom-color: var(--accent); }
+
+        /* Sections */
+        section { margin: 56px 0; }
+        h2.section-title {
+            font-size: 1.7rem; font-weight: 700; margin-bottom: 8px; padding-bottom: 12px;
+            border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: 12px;
+        }
+        h2.section-title .num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px; border-radius: 10px; font-size: 0.9rem; font-weight: 800;
+            background: rgba(34, 211, 238, 0.12); color: var(--accent); flex-shrink: 0;
+        }
+        h3 { font-size: 1.15rem; color: var(--accent-2); margin: 28px 0 10px; }
+        h4 { font-size: 1rem; color: var(--accent-3); margin: 20px 0 8px; }
+        p { margin-bottom: 14px; color: var(--muted); }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Tables */
+        .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: var(--radius); border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        thead { background: var(--surface-2); }
+        th { text-align: left; padding: 12px 16px; font-weight: 700; color: var(--accent); border-bottom: 2px solid var(--border); white-space: nowrap; }
+        td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--muted); }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: rgba(34, 211, 238, 0.03); }
+        td strong { color: var(--text); }
+        td code { background: var(--code-bg); padding: 2px 7px; border-radius: 5px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--accent-3); }
+
+        /* Cards */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin: 18px 0; }
+        .card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 20px 22px; transition: border-color 0.2s, transform 0.2s;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .card h4 { margin-top: 0; }
+        .card p { font-size: 0.88rem; margin-bottom: 8px; }
+        .card .tag {
+            display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px;
+            border-radius: 999px; background: rgba(167, 139, 250, 0.15); color: var(--accent-2);
+            margin-right: 4px; margin-top: 6px;
+        }
+
+        /* Code */
+        pre {
+            background: var(--code-bg); border: 1px solid var(--border); border-radius: 10px;
+            padding: 16px 20px; overflow-x: auto; margin: 14px 0;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.84rem; line-height: 1.6; color: #cbd5e1;
+        }
+        code { font-family: 'JetBrains Mono', monospace; }
+
+        /* Callout */
+        .callout {
+            border-left: 4px solid var(--accent-4); background: rgba(245, 158, 11, 0.07);
+            padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0; margin: 18px 0;
+        }
+        .callout.info { border-left-color: var(--accent); background: rgba(34, 211, 238, 0.06); }
+        .callout.success { border-left-color: var(--accent-3); background: rgba(52, 211, 153, 0.06); }
+        .callout p { margin: 0; font-size: 0.9rem; }
+
+        /* Flow diagram (CSS) */
+        .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 18px 0; font-size: 0.85rem; }
+        .flow-step { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 16px; font-weight: 600; color: var(--text); }
+        .flow-arrow { color: var(--accent); font-weight: 700; font-size: 1.2rem; }
+
+        /* Footer */
+        footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 60px; }
+
+        @media (max-width: 640px) {
+            .hero { padding: 50px 0 40px; }
+            .toc { padding: 20px; }
+            .toc-grid { grid-template-columns: 1fr; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="container">
+        <h1>Antigravity-Guide-Book-V1</h1>
+        <p>A complete, sequential, hyperlinked reference for mastering Google Antigravity — from first install to multi-agent orchestration, security hardening, and ecosystem integration.</p>
+        <div class="badge-row">
+            <span class="badge cyan">Skills</span>
+            <span class="badge violet">MCP Servers</span>
+            <span class="badge green">Plugins</span>
+            <span class="badge cyan">Agents & Subagents</span>
+            <span class="badge violet">Hooks & Rules</span>
+            <span class="badge green">Dev Workflows</span>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- TOC -->
+    <nav class="toc">
+        <h2>Contents</h2>
+        <div class="toc-grid">
+            <a href="#overview">01 · Overview & Architecture</a>
+            <a href="#install">02 · Install & First Run</a>
+            <a href="#skills">03 · Skills</a>
+            <a href="#mcp">04 · MCP Servers</a>
+            <a href="#plugins">05 · Plugins & Marketplace</a>
+            <a href="#agents">06 · Agents & Subagents</a>
+            <a href="#rules-hooks">07 · Rules & Lifecycle Hooks</a>
+            <a href="#workflows">08 · Dev Workflows</a>
+            <a href="#memory">09 · Memory & Context</a>
+            <a href="#code-intel">10 · Code Intelligence</a>
+            <a href="#multi-agent">11 · Multi-Agent Orchestration</a>
+            <a href="#security">12 · Security & Safety</a>
+            <a href="#quota">13 · Quota & Usage Monitoring</a>
+            <a href="#design">14 · UI/UX & Design</a>
+            <a href="#seo">15 · SEO & Discoverability</a>
+            <a href="#ecosystem">16 · External Ecosystem</a>
+            <a href="#learning">17 · Learning Resources</a>
+            <a href="#troubleshoot">18 · Troubleshooting</a>
+            <a href="#best-practices">19 · Best Practices</a>
+        </div>
+    </nav>
+
+    <!-- 01 OVERVIEW -->
+    <section id="overview">
+        <h2 class="section-title"><span class="num">01</span> Overview & Architecture</h2>
+        <p>Google Antigravity is an <strong>agentic development platform</strong> that ships as three surfaces: the <strong>Antigravity 2.0 desktop app</strong> for running agents, the <strong>Antigravity CLI</strong> (<code>agy</code>) for the terminal, and the <strong>Antigravity IDE</strong> — a VS Code fork with deep agent integration, plus extensions for VS Code, Visual Studio, JetBrains, Zed, and Xcode[reference:0].</p>
+
+        <h3>Core Extension Primitives</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Primitive</th><th>What It Does</th><th>Invocation</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Skill</strong></td>
+                        <td>Modular package of domain knowledge, multi-step workflow, and optional helper scripts defined in <code>SKILL.md</code>. Teaches the agent <em>how</em> to orchestrate tools for complex tasks like incident triage or design-to-code.</td>
+                        <td>Auto-loaded on prompt match, or explicit <code>/&lt;skill-name&gt;</code>[reference:1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MCP Server</strong></td>
+                        <td>Connects agents to external APIs, databases, and dev tools via Model Context Protocol — remote HTTPS or local stdio.</td>
+                        <td>Declared in <code>mcp_config.json</code>; tools namespaced as <code>&lt;plugin&gt;_&lt;server&gt;</code>[reference:2]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Custom Agent / Subagent</strong></td>
+                        <td>Specialized persona with dedicated system prompt, model tier, and tool allowlist; runs as primary session agent or background subagent.</td>
+                        <td>Defined in <code>agents/&lt;name&gt;.md</code>[reference:3]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rule</strong></td>
+                        <td>Persistent coding standards, architectural constraints, or glob-scoped instructions written in Markdown.</td>
+                        <td><code>rules/AGENTS.md</code> or <code>rules/*.md</code>[reference:4]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lifecycle Hook</strong></td>
+                        <td>Synchronous shell command or prompt evaluation at specific loop points — <code>SessionStart</code>, <code>PreToolUse</code>, <code>PostToolUse</code>, <code>PreInvocation</code>, <code>PostInvocation</code>, <code>Stop</code> — to inspect, intercept, or augment agent behavior.</td>
+                        <td><code>hooks.json</code>[reference:5]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="callout info">
+            <p><strong>Key design principle:</strong> Antigravity uses <strong>progressive disclosure</strong> — at session start only skill names and descriptions are loaded. Full <code>SKILL.md</code> instructions are pulled in only when relevant, keeping the context window lean[reference:6].</p>
+        </div>
+    </section>
+
+    <!-- 02 INSTALL -->
+    <section id="install">
+        <h2 class="section-title"><span class="num">02</span> Install & First Run</h2>
+
+        <h3>Getting Antigravity</h3>
+        <p>Download the desktop app from <a href="https://antigravity.google/docs/overview/" target="_blank" rel="noopener">antigravity.google/docs/overview</a>. The CLI (<code>agy</code>) is bundled or installable separately. For IDE extensions, see the <a href="https://antigravity.google/docs/ide/extensions/" target="_blank" rel="noopener">extensions docs</a>.</p>
+
+        <h3>Project Structure</h3>
+        <p>Antigravity reads skills from two locations[reference:7]:</p>
+        <pre><code># Workspace-level (per project)
+.agents/skills/&lt;skill-name&gt;/SKILL.md
+
+# Global (all projects, App + CLI)
+~/.gemini/config/skills/&lt;skill-name&gt;/SKILL.md
+
+# CLI-only skill locations
+~/.gemini/antigravity-cli/skills/
+~/.gemini/skills/</code></pre>
+
+        <div class="callout">
+            <p><strong>Important:</strong> The skill folder must sit directly under <code>skills/</code>. The <code>.agent/skills</code> path is legacy; <code>.agents/skills</code> is the current default[reference:8].</p>
+        </div>
+
+        <h3>MCP Configuration Paths</h3>
+        <pre><code># Global MCP config (recommended for API keys)
+~/.gemini/config/mcp_config.json
+
+# Workspace-level MCP config
+.agents/mcp_config.json
+
+# CLI MCP config
+~/.gemini/antigravity-cli/mcp_config.json</code></pre>
+        <p>You can open the MCP config directly from Antigravity UI: <strong>Settings → Customizations → Open MCP Config</strong>.</p>
+
+        <h3>Quick Install: A Skill from GitHub</h3>
+        <pre><code># Clone a skill collection into your workspace
+git clone https://github.com/sickn33/antigravity-awesome-skills.git .agents/skills
+
+# Or copy a single skill folder
+cp -r /path/to/skill-folder .agents/skills/</code></pre>
+        <p>The universal path that works across most tools is <code>.agent/skills/</code>; Antigravity officially defaults to <code>.agents/skills/</code> but maintains backward compatibility[reference:10].</p>
+    </section>
+
+    <!-- 03 SKILLS -->
+    <section id="skills">
+        <h2 class="section-title"><span class="num">03</span> Skills — The Core Building Block</h2>
+        <p>Skills are the primary way to extend Antigravity’s competence. A skill is a folder containing a <code>SKILL.md</code> file with YAML frontmatter (name, description, optional metadata) and Markdown instructions, plus optional <code>scripts/</code>, <code>references/</code>, and <code>assets/</code> directories.</p>
+
+        <h3>Skill Collections Worth Installing</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Collection</th><th>Scale</th><th>Best For</th><th>Link</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Superpowers</strong></td>
+                        <td>60+ skills</td>
+                        <td>Brainstorming, planning, TDD, code review — auto-enforced in every session</td>
+                        <td><a href="https://github.com/obra/superpowers" target="_blank">obra/superpowers</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anthropic Official Skills</strong></td>
+                        <td>Large official set</td>
+                        <td>Frontend design, document co-authoring, production-grade interfaces</td>
+                        <td><a href="https://github.com/anthropics/skills" target="_blank">anthropics/skills</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Agentic Awesome Skills</strong></td>
+                        <td>2,884+</td>
+                        <td>Broadest catalog: development, DevOps, security, design, data, marketing</td>
+                        <td><a href="https://github.com/sickn33/agentic-awesome-skills" target="_blank">sickn33/agentic-awesome-skills</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Antigravity Awesome Skills</strong></td>
+                        <td>1,254+ / 970+ / 200+ (multiple forks)</td>
+                        <td>Cross-compatible with Claude Code, Cursor, Gemini CLI; role-based bundles</td>
+                        <td><a href="https://github.com/ThisIsAnil-tech/antigravity-awesome-skills" target="_blank">ThisIsAnil-tech/antigravity-awesome-skills</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Addy Osmani Agent Skills</strong></td>
+                        <td>35</td>
+                        <td>Constraint-driven development, interview-me, secrets scanning, network ops</td>
+                        <td><a href="https://github.com/addyosmani/agent-skills" target="_blank">addyosmani/agent-skills</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vercel Labs Skills</strong></td>
+                        <td>40+ React/Next.js rules</td>
+                        <td>Performance optimization, framework best practices</td>
+                        <td><a href="https://github.com/vercel-labs/agent-skills" target="_blank">vercel-labs/agent-skills</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>High-Value Single Skills</h3>
+        <div class="card-grid">
+            <div class="card">
+                <h4>🔍 Find Skills</h4>
+                <p>Discovers and installs new skills for your agent on demand.</p>
+                <span class="tag">vercel-labs/skills</span>
+            </div>
+            <div class="card">
+                <h4>🏗️ Executing Plans</h4>
+                <p>Executes implementation plans with verification at each step.</p>
+                <span class="tag">obra/superpowers</span>
+            </div>
+            <div class="card">
+                <h4>🎨 Frontend Design</h4>
+                <p>Creates distinctive, production-grade interfaces — avoids “AI slop.”</p>
+                <span class="tag">anthropics/skills</span>
+            </div>
+            <div class="card">
+                <h4>🔐 Secrets Scanning</h4>
+                <p>Pre-commit secret detection and security audit workflows.</p>
+                <span class="tag">addyosmani/agent-skills</span>
+            </div>
+            <div class="card">
+                <h4>🧪 TDD Workflow</h4>
+                <p>Test-driven development discipline enforced end-to-end.</p>
+                <span class="tag">superpowers</span>
+            </div>
+            <div class="card">
+                <h4>📝 Doc Co-authoring</h4>
+                <p>Structured documentation writing with outlines, drafts, and review loops.</p>
+                <span class="tag">anthropics/skills</span>
+            </div>
+            <div class="card">
+                <h4>🐛 Debate Review</h4>
+                <p>Two-model debate review of PRs/MRs with inline comments and automated babysitting.</p>
+                <span class="tag">amElnagdy/review-skills</span>
+            </div>
+            <div class="card">
+                <h4>🧠 Grill Me</h4>
+                <p>Relentlessly interviews you about a plan until every decision branch is resolved.</p>
+                <span class="tag">mattpocock/skills</span>
+            </div>
+        </div>
+
+        <h3>Skill Bundles by Role</h3>
+        <p>Curated bundles exist for <strong>Indie Game Dev</strong>, <strong>AAS Web App Builder</strong>, <strong>AAS Product Design Studio</strong>, <strong>AI Product & Evaluation Ops</strong>, and more. See <a href="https://github.com/antigravity-skill-bundles" target="_blank">Antigravity Skill Bundles</a> for role-based packs[reference:11].</p>
+    </section>
+
+    <!-- 04 MCP -->
+    <section id="mcp">
+        <h2 class="section-title"><span class="num">04</span> MCP Servers — Connect to the Outside World</h2>
+        <p>The <strong>Model Context Protocol (MCP)</strong> is the open standard that lets agents call external tools and data sources. Antigravity supports both remote HTTPS MCP servers and local stdio processes.</p>
+
+        <h3>Essential MCP Servers</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>MCP Server</th><th>What It Connects</th><th>Why It Matters</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GitHub MCP</strong></td>
+                        <td>Repos, issues, PRs, Actions</td>
+                        <td>Automate engineering processes directly from the agent[reference:12]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>n8n MCP</strong></td>
+                        <td>400+ workflow automation integrations</td>
+                        <td>Build production-ready automation workflows without guessing configs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Notion MCP</strong></td>
+                        <td>Notes, databases, project docs</td>
+                        <td>Manage knowledge bases and specs inside the agent loop[reference:14]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Azure MCP</strong></td>
+                        <td>Azure Storage, Cosmos DB, cloud services</td>
+                        <td>Seamless Azure resource access from Antigravity[reference:15]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perplexity MCP</strong></td>
+                        <td>Web search and research</td>
+                        <td>Real-time information retrieval with citations[reference:16]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MarkItDown MCP</strong></td>
+                        <td>PDF, Office, HTML → clean Markdown</td>
+                        <td>Universal document ingestion for AI consumption</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Browser Use MCP</strong></td>
+                        <td>Browser automation</td>
+                        <td>Agent-driven web interaction and scraping</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Docker MCP</strong></td>
+                        <td>100+ containerized MCP servers</td>
+                        <td>Standardized, isolated MCP deployment[reference:19]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Datadog MCP</strong></td>
+                        <td>Logs, metrics, alerts</td>
+                        <td>Production observability from the agent[reference:20]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stripe MCP</strong></td>
+                        <td>Payments, subscriptions</td>
+                        <td>Server-side payment state verification[reference:21]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>MCP Configuration Example</h3>
+        <pre><code>{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_TOKEN": "ghp_..." }
+    },
+    "perplexity": {
+      "serverUrl": "https://mcp.perplexity.ai/sse",
+      "headers": { "Authorization": "Bearer ..." }
+    }
+  }
+}</code></pre>
+        <p>For a deeper catalog of 194+ MCP servers across 19 categories, see <a href="https://github.com/michielhdoteth/awesome-ai-agent-tools" target="_blank">awesome-ai-agent-tools</a>.</p>
+    </section>
+
+    <!-- 05 PLUGINS -->
+    <section id="plugins">
+        <h2 class="section-title"><span class="num">05</span> Plugins & Marketplace</h2>
+        <p>The <strong>Antigravity Plugin Marketplace</strong> (launched October 2026) is a centralized catalog for discovering and installing verified plugins from Google and partners including Stripe, Figma, Jira, Datadog, and more[reference:23].</p>
+
+        <h3>What a Plugin Bundles</h3>
+        <p>A plugin is a versioned, self-contained directory defined by <code>plugin.json</code> that can package up to five component types[reference:24]:</p>
+        <div class="flow">
+            <span class="flow-step">Skills</span><span class="flow-arrow">+</span>
+            <span class="flow-step">MCP Servers</span><span class="flow-arrow">+</span>
+            <span class="flow-step">Custom Agents</span><span class="flow-arrow">+</span>
+            <span class="flow-step">Rules</span><span class="flow-arrow">+</span>
+            <span class="flow-step">Hooks</span>
+        </div>
+
+        <h3>Plugin Manifest (<code>plugin.json</code>)</h3>
+        <pre><code>{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "my-plugin",
+  "version": "1.0.0",
+  "description": "Skills and specialized agents for my workflow",
+  "author": "...",
+  "components": {
+    "skills": ["skills/code-review"],
+    "mcpServers": ["mcp_config.json"],
+    "agents": ["agents/reviewer.md"],
+    "rules": ["rules/AGENTS.md"],
+    "hooks": ["hooks/hooks.json"]
+  }
+}</code></pre>
+
+        <h3>Plugin Directory Structure</h3>
+        <pre><code>my-plugin/
+├── plugin.json          # required manifest
+├── skills/
+│   └── code-review/
+│       └── SKILL.md
+├── agents/
+│   └── reviewer.md
+├── rules/
+│   └── AGENTS.md
+├── hooks/
+│   └── hooks.json
+└── mcp_config.json</code></pre>
+
+        <h3>Installing Plugins</h3>
+        <pre><code># From marketplace (interactive)
+agy plugin install &lt;plugin-name&gt;
+
+# From GitHub
+agy plugin install https://github.com/user/repo
+
+# From local directory
+agy plugin install ./my-plugin</code></pre>
+        <p>Plugins are installed to <code>~/.gemini/config/plugins/</code>. Skills inside plugins are namespaced by plugin name[reference:25].</p>
+
+        <div class="callout success">
+            <p><strong>Spotlight:</strong> The marketplace includes first-party integrations from software delivery, enterprise ops, data analytics, design, commerce, and security partners — browse categories in the Antigravity App under <strong>Customizations → Marketplace</strong>[reference:26].</p>
+        </div>
+    </section>
+
+    <!-- 06 AGENTS -->
+    <section id="agents">
+        <h2 class="section-title"><span class="num">06</span> Agents & Subagents</h2>
+        <p>Antigravity lets you define <strong>custom agents</strong> (primary session personas) and <strong>subagents</strong> (background workers spawned by the primary agent). Both are Markdown files with YAML frontmatter specifying model, tools, and behavior.</p>
+
+        <h3>Agent Definition Example</h3>
+        <pre><code>---
+name: security-reviewer
+description: Reviews code for security vulnerabilities
+model: gemini-3-pro
+tools: [read_file, list_directory, run_terminal]
+---
+You are a senior application security engineer.
+Review every diff for injection flaws, auth bypasses, and secret leakage.
+Report findings with severity, evidence, and remediation.</code></pre>
+
+        <h3>Agent/Subagent Capabilities</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Feature</th><th>Primary Agent</th><th>Subagent</th></tr></thead>
+                <tbody>
+                    <tr><td>System prompt</td><td>Customizable</td><td>Customizable</td></tr>
+                    <tr><td>Model selection</td><td>Yes</td><td>Yes (can use cheaper/faster model)</td></tr>
+                    <tr><td>Tool allowlist</td><td>Yes</td><td>Yes</td></tr>
+                    <tr><td>Command execution policy</td><td>Yes</td><td>Yes</td></tr>
+                    <tr><td>Runs in background</td><td>—</td><td>Yes</td></tr>
+                    <tr><td>Parallel execution</td><td>—</td><td>Yes, via orchestration skills</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Agents defined inside a plugin can be selected as the primary session agent for a dedicated workflow[reference:27]. For multi-agent fleet orchestration, see <a href="https://github.com/amElnagdy/delegate-skills" target="_blank">delegate-skills</a> (18 delegation skills for Claude/Codex/Cursor/OpenCode relays)[reference:28].</p>
+    </section>
+
+    <!-- 07 RULES & HOOKS -->
+    <section id="rules-hooks">
+        <h2 class="section-title"><span class="num">07</span> Rules & Lifecycle Hooks</h2>
+
+        <h3>Rules — Persistent Guardrails</h3>
+        <p>Rules are Markdown instructions that establish coding standards, API limits, security constraints, and domain conventions. They can be scoped globally or to specific file globs.</p>
+        <pre><code>&lt;!-- rules/AGENTS.md --&gt;
+# Engineering Rules
+
+- All database queries must use parameterized statements.
+- Never log secrets, tokens, or PII.
+- API calls to third-party services must have a 10-second timeout.
+- New endpoints require an accompanying integration test.
+- Payment state must be verified server-side; never trust client-side flags.</code></pre>
+
+        <h3>Lifecycle Hooks — Deterministic Control</h3>
+        <p>Hooks run <strong>outside the model’s reasoning loop</strong> and exchange structured JSON via stdin/stdout. They are your enforcement layer for security, auditing, and workflow gating[reference:29].</p>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Hook</th><th>When It Fires</th><th>Use Case</th></tr></thead>
+                <tbody>
+                    <tr><td><code>SessionStart</code></td><td>New session begins</td><td>Inject workspace context, load environment info</td></tr>
+                    <tr><td><code>PreToolUse</code></td><td>Before a tool is called</td><td>Block dangerous commands, redact secrets, require approval</td></tr>
+                    <tr><td><code>PostToolUse</code></td><td>After a tool returns</td><td>Audit tool output, validate results, trigger follow-up checks</td></tr>
+                    <tr><td><code>PreInvocation</code></td><td>Before model invocation</td><td>Inject context, modify prompts</td></tr>
+                    <tr><td><code>PostInvocation</code></td><td>After model response</td><td>Filter output, enforce formatting</td></tr>
+                    <tr><td><code>Stop</code></td><td>Agent loop ends</td><td>Run linters/tests; fail the turn if checks don’t pass</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Hook Configuration (<code>hooks.json</code>)</h3>
+        <pre><code>{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "run_terminal",
+        "command": "node ./hooks/block-dangerous.js"
+      }
+    ],
+    "Stop": [
+      {
+        "command": "npm run lint && npm run test",
+        "failOnError": true
+      }
+    ]
+  }
+}</code></pre>
+        <p><strong>Team pattern:</strong> Use <code>Stop</code> hooks to require lint + tests to pass before the agent can complete a turn — a hard gate against shipping broken code[reference:30].</p>
+    </section>
+
+    <!-- 08 WORKFLOWS -->
+    <section id="workflows">
+        <h2 class="section-title"><span class="num">08</span> Development Workflows</h2>
+
+        <h3>Spec-Driven Development</h3>
+        <p>Spec-driven frameworks interview you, build a plan, then execute phase-by-phase with verification.</p>
+        <div class="card-grid">
+            <div class="card">
+                <h4>GSD (Get Shit Done)</h4>
+                <p>Interviews you, builds the plan, executes phase by phase with verification. One command install.</p>
+                <span class="tag">glittercowboy/get-shit-done</span>
+            </div>
+            <div class="card">
+                <h4>Spec Kitty</h4>
+                <p>Spec-driven workflow with command skills installed via <code>.agents/skills/</code>. Syncs config and restarts Antigravity.</p>
+                <span class="tag">Spec Kitty</span>
+            </div>
+            <div class="card">
+                <h4>Brainstorming</h4>
+                <p>Planning skill that explores options before implementation — prevents premature coding.</p>
+                <span class="tag">antigravity-awesome-skills</span>
+            </div>
+        </div>
+        <pre><code># Install GSD
+npx get-shit-done-cc
+
+# Or install Spec Kitty
+git clone ... .agents/skills/spec-kitty-specify
+spec-kitty agent config sync</code></pre>
+
+        <h3>Test-Driven Development (TDD)</h3>
+        <p>Superpowers enforces a TDD loop: write failing test → implement → verify. The <code>test-driven-development</code> skill provides the workflow scaffold, while <code>Stop</code> hooks can gate completion on test passage.</p>
+
+        <h3>Planning & Interview Skills</h3>
+        <p>The <strong>Grill Me</strong> skill relentlessly interviews you about a plan until every branch of the decision tree is resolved. <strong>Brainstorming</strong> and <strong>architecture</strong> skills from the awesome-skills collections provide structured pre-implementation exploration[reference:32].</p>
+    </section>
+
+    <!-- 09 MEMORY -->
+    <section id="memory">
+        <h2 class="section-title"><span class="num">09</span> Memory & Context</h2>
+
+        <h3>Claude Mem</h3>
+        <p>Automatically captures everything Claude does during sessions and injects relevant context back into future sessions. Persistent memory for Claude Code — directly applicable as a memory layer for Antigravity workflows when combined with MCP-based storage[reference:33].</p>
+
+        <h3>Handoff Skill</h3>
+        <p>The <code>handoff</code> skill writes a long session into a file that the next agent reads, carrying context across fresh sessions without manual copy-paste[reference:34].</p>
+
+        <h3>Context Engineering</h3>
+        <div class="callout info">
+            <p><strong>Progressive disclosure is your friend.</strong> Keep the number of active skills low. If Antigravity starts hitting context limits with too many active skills, use the activation guidance in <code>docs/users/agent-overload-recovery.md</code>[reference:35].</p>
+        </div>
+        <p>For a deep system on carrying your preferences, rules, and work context across sessions and tools, see Michael Zelbel’s book <a href="https://leanpub.com/teachitonce" target="_blank">Teach It Once</a> — free sample chapters available[reference:36].</p>
+    </section>
+
+    <!-- 10 CODE INTELLIGENCE -->
+    <section id="code-intel">
+        <h2 class="section-title"><span class="num">10</span> Code Intelligence</h2>
+        <p>Antigravity’s IDE surface is a VS Code fork with deep agent integration. Code intelligence tools extend its understanding of your codebase.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Tool</th><th>What It Does</th><th>Antigravity Surface</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>SkyDeckAI Code MCP</strong></td><td>File system operations, tree-sitter code analysis for multiple languages, code execution, web content fetching with HTML-to-Markdown</td><td>MCP server[reference:37]</td></tr>
+                    <tr><td><strong>Serena MCP</strong></td><td>Semantic code search and navigation across large codebases</td><td>MCP server</td></tr>
+                    <tr><td><strong>Tree-sitter MCP</strong></td><td>AST-level code parsing and structural analysis</td><td>MCP server</td></tr>
+                    <tr><td><strong>ripgrep MCP</strong></td><td>Fast text search with context-aware filtering</td><td>MCP server</td></tr>
+                    <tr><td><strong>Code review skills</strong></td><td>Diff analysis, security review, inline PR comments</td><td>Skills (debate-review, babysit-pr)[reference:38]</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 11 MULTI-AGENT -->
+    <section id="multi-agent">
+        <h2 class="section-title"><span class="num">11</span> Multi-Agent Orchestration</h2>
+        <p>Running several agents in parallel or relaying work between them unlocks compound productivity — but requires deliberate coordination.</p>
+
+        <h3>Orchestration Patterns</h3>
+        <div class="card-grid">
+            <div class="card">
+                <h4>Fleet Orchestration</h4>
+                <p>Delegate skills provide 18 relays for Claude/Codex/Cursor/OpenCode with Node built-ins only. Multi-agent delegation without heavy dependencies.</p>
+                <span class="tag">amElnagdy/delegate-skills</span>
+            </div>
+            <div class="card">
+                <h4>Subagent Fan-Out</h4>
+                <p>Primary agent spawns subagents for parallel research, refactoring, or test generation. Each subagent has its own tool allowlist and model.</p>
+                <span class="tag">Native Antigravity</span>
+            </div>
+            <div class="card">
+                <h4>Debate Review</h4>
+                <p>Two models debate a PR/MR with inline comments and automated review-round babysitting across GitHub, GitLab, and Azure DevOps.</p>
+                <span class="tag">amElnagdy/review-skills</span>
+            </div>
+            <div class="card">
+                <h4>Ralph Loop</h4>
+                <p>Validated single-task execution loop with fail-closed boundaries — repo-resident Kanban/task ledger.</p>
+                <span class="tag">yylo-dev/yylo-skills</span>
+            </div>
+        </div>
+
+        <h3>Safety Rails for Multi-Agent Work</h3>
+        <ul style="margin: 12px 0 12px 24px; color: var(--muted);">
+            <li>Give each subagent the <strong>smallest tool scope</strong> necessary.</li>
+            <li>Use <code>PreToolUse</code> hooks to block consequential actions (deletes, spend, admin changes) without human confirmation.</li>
+            <li>Require <code>Stop</code> hooks to pass lint + tests before any agent claims completion.</li>
+            <li>Track processed event IDs / task IDs to make retries idempotent.</li>
+        </ul>
+    </section>
+
+    <!-- 12 SECURITY -->
+    <section id="security">
+        <h2 class="section-title"><span class="num">12</span> Security & Safety</h2>
+        <p>Agentic coding amplifies both capability and risk. Antigravity’s hook system and rule layer are your primary enforcement mechanisms.</p>
+
+        <h3>Security Checklist (From the 70-Check Launch Filter)</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Domain</th><th>Critical Checks</th><th>Antigravity Mitigation</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Secrets</strong></td><td>No exposed DB credentials, no public <code>.env</code>, no hardcoded API keys, no secrets in Git history or frontend JS</td><td><code>PreToolUse</code> hook to block reads of <code>.env</code> and secret patterns; secrets-scanning skills[reference:39]</td></tr>
+                    <tr><td><strong>Auth & Authorization</strong></td><td>Server-side auth on every private route, no missing authorization, no cross-user data access, no unprotected admin routes</td><td>Rules in <code>AGENTS.md</code>; security-reviewer subagent; OWASP ASVS skill references</td></tr>
+                    <tr><td><strong>Input & Injection</strong></td><td>Server-side validation, parameterized SQL, NoSQL shape validation, no command injection</td><td>Code-review skills with injection detection; <code>Stop</code> hooks running SAST</td></tr>
+                    <tr><td><strong>Web & Sessions</strong></td><td>XSS prevention, CSRF protection, secure file uploads, path traversal protection, SSRF allowlisting</td><td>Frontend quality guardrails skill; security headers rule[reference:40]</td></tr>
+                    <tr><td><strong>AI-Specific</strong></td><td>Prompt injection separation, tool calls authorized with real user context, no sensitive info disclosure, safe use of AI output</td><td>Rules for tool authorization; output-as-untrusted rule; <code>PreToolUse</code> gating on AI tool calls</td></tr>
+                    <tr><td><strong>Infrastructure</strong></td><td>MFA on privileged accounts, least-privilege DB roles, audit logs, tested backups, no public dashboards</td><td>Security skills for DevOps/SRE; hook-based audit logging[reference:41]</td></tr>
+                    <tr><td><strong>CI/CD</strong></td><td>Scoped pipeline tokens, pinned actions, fail-closed security checks, no untrusted build scripts</td><td><code>Stop</code> hooks gating on security checks; review of <code>hooks.json</code> and build scripts</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Hardening Patterns</h3>
+        <pre><code>// PreToolUse hook: block dangerous terminal commands
+{
+  "PreToolUse": [{
+    "matcher": "run_terminal",
+    "command": "node -e \"const c=JSON.parse(require('fs').readFileSync(0,'utf8'));if(/rm -rf|drop table|delete from/i.test(c.tool_input)){process.exit(1)}\""
+  }]
+}</code></pre>
+        <p>For the full 70-check launch filter, see the <a href="https://docs.google.com/document/d/1CTxL5T4OQstQh5yJ_cZWnC2LZU9hMHiXS6u-cBQ4lo0/mobilebasic" target="_blank">Vibe-Coded App Security — Part 4</a>. For a structured security skill library, use <a href="https://github.com/BagelHole/DevOps-Security-Agent-Skills" target="_blank">BagelHole/DevOps-Security-Agent-Skills</a> (124 skills across security, infrastructure, compliance, DevOps)[reference:42].</p>
+
+        <div class="callout">
+            <p><strong>Known vulnerability note:</strong> Security researchers have flagged a potential backdoor risk in Antigravity (reported December 2025). Google has stated it is working on a fix. Monitor official channels and keep Antigravity updated[reference:43].</p>
+        </div>
+    </section>
+
+    <!-- 13 QUOTA -->
+    <section id="quota">
+        <h2 class="section-title"><span class="num">13</span> Quota & Usage Monitoring</h2>
+        <p>Antigravity’s free tier is generous but finite. Early users reported exhausting free credits in ~20 minutes of intensive agentic work[reference:44]. Monitoring and quota-aware workflows are essential.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Tool</th><th>What It Provides</th><th>Install / Use</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>agy-usage</strong></td><td>Current quota, one-line statusline, daemon-cached JSON output; mirrors smallccusage/gemini-cli-usage</td><td><code>uv tool install agy-usage</code>[reference:45]</td></tr>
+                    <tr><td><strong>quotacli</strong></td><td>Terminal quota tracker for Claude Code, Cursor, Codex, Antigravity, Grok; shows which of Antigravity’s 4 data-source tiers answered</td><td><code>pip install quotacli</code>; <code>quotacli --provider antigravity -v</code>[reference:46]</td></tr>
+                    <tr><td><strong>Antigravity /usage</strong></td><td>Built-in CLI command (alias <code>/quota</code>) — refreshes model config and opens interactive TUI panel</td><td><code>/usage</code> inside Antigravity CLI[reference:47]</td></tr>
+                    <tr><td><strong>antigravity-usage</strong></td><td>Fast offline/online CLI tracker with multi-account support; auto-wakeup on macOS/Linux</td><td><code>npm i -g antigravity-usage</code>[reference:48]</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="callout info">
+            <p><strong>Quota strategy:</strong> Use cheaper/faster models for subagents and reserve high-capability models (Gemini 3 Pro) for primary planning and complex reasoning. Set <code>PreInvocation</code> hooks to warn when projected spend exceeds a threshold. Antigravity quota resets approximately every 5 hours — unused quota does not roll over[reference:49].</p>
+        </div>
+    </section>
+
+    <!-- 14 DESIGN -->
+    <section id="design">
+        <h2 class="section-title"><span class="num">14</span> UI/UX & Design</h2>
+
+        <h3>UI/UX Pro Max Skill</h3>
+        <p><strong>16K+ stars.</strong> 50+ UI styles, 97 color palettes, 57 font pairings across 9 tech stacks — auto-generates a design system so your app doesn’t look like “AI slop”[reference:50].</p>
+
+        <h3>Frontend Design Skill</h3>
+        <p>Creates distinctive, production-grade interfaces with high design quality. From Anthropic’s official skills collection.</p>
+
+        <h3>UI Layout Analyzer</h3>
+        <p>Analyzes layout structure, spacing, and visual hierarchy for improvement suggestions[reference:52].</p>
+
+        <h3>Frontend Quality Guardrails</h3>
+        <p>Enforces accessibility, responsive design, and performance standards automatically[reference:53].</p>
+
+        <div class="callout success">
+            <p><strong>Design workflow:</strong> Install UI/UX Pro Max + Frontend Design + Frontend Quality Guardrails. Run the design skill first to generate a system, then the frontend skill to implement, then the guardrails skill to validate before shipping.</p>
+        </div>
+    </section>
+
+    <!-- 15 SEO -->
+    <section id="seo">
+        <h2 class="section-title"><span class="num">15</span> SEO & Discoverability</h2>
+        <p>Shipping a beautiful app that nobody can find is a common failure mode. These tools integrate search visibility into the agent workflow.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Tool / Skill</th><th>Function</th><th>Source</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>GEO/SEO Skills</strong></td><td>14 skills: geo-audit, geo-citability, geo-technical, client reporting</td><td><a href="https://github.com/zubair-trabzada/geo-seo-claude" target="_blank">zubair-trabzada/geo-seo-claude</a>[reference:54]</td></tr>
+                    <tr><td><strong>SEO Audit Skill</strong></td><td>Site audits, meta tag validation, structured data checks</td><td>Antigravity Awesome Skills (Business category)[reference:55]</td></tr>
+                    <tr><td><strong>Google Search Console</strong></td><td>Submit sitemaps, monitor indexing, catch crawl errors, view query performance</td><td><a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a></td></tr>
+                    <tr><td><strong>Bing Webmaster Tools + IndexNow</strong></td><td>Instant indexing on Bing/Yandex/Seznam/Naver via API ping</td><td><a href="https://www.bing.com/webmasters" target="_blank">bing.com/webmasters</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>For the full practical SEO checklist — Search Console setup, sitemaps, robots.txt, meta tags, Open Graph, Core Web Vitals, and mobile optimization — see the included guide <em>“Why Nobody’s Visiting Your Website (And How to Fix It)”</em>.</p>
+    </section>
+
+    <!-- 16 ECOSYSTEM -->
+    <section id="ecosystem">
+        <h2 class="section-title"><span class="num">16</span> External Ecosystem</h2>
+
+        <h3>Antigravity vs. Other Agentic Tools</h3>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Tool</th><th>Strength</th><th>Best For</th><th>Trade-off</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Antigravity</strong></td>
+                        <td>Full desktop IDE + CLI + plugin ecosystem; free tier generous; browser automation via Chrome; Windsurf team lineage</td>
+                        <td>Developers who want a complete agent-first IDE with deep extensibility[reference:56]</td>
+                        <td>Learning curve; credit consumption can spike fast[reference:57]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Claude Code</strong></td>
+                        <td>Highest multi-file refactor accuracy (85–95%); strong large-codebase performance</td>
+                        <td>Terminal-based autonomous coding, complex refactors[reference:58]</td>
+                        <td>Slow (30s–2m per task); $100+/month; no GUI[reference:59]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cursor</strong></td>
+                        <td>Fast (3–10s); polished daily-driver IDE; Composer model</td>
+                        <td>Everyday coding with AI assistance; background agent[reference:60]</td>
+                        <td>Less autonomous than Claude Code; pricing opacity[reference:61]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Codex CLI</strong></td>
+                        <td>OpenAI ecosystem integration</td>
+                        <td>OpenAI-heavy stacks</td>
+                        <td>Less mature skill ecosystem</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Windsurf</strong></td>
+                        <td>Deep AI integration in a familiar IDE</td>
+                        <td>Developers wanting IDE-native AI</td>
+                        <td>Antigravity shares Windsurf lineage but adds Google ecosystem[reference:62]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Cross-Tool Skill Compatibility</h3>
+        <p>Many skill collections are designed to work across Claude Code, Cursor, Codex, Gemini CLI, and Antigravity simultaneously. The universal install path is <code>.agent/skills/</code> (Antigravity defaults to <code>.agents/skills/</code> but maintains backward compatibility)[reference:63].</p>
+
+        <h3>AI Engineering Ecosystem Catalog</h3>
+        <p>The <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem" target="_blank">ai-engineering-ecosystem</a> repository provides a continuously maintained directory of tools across 14 categories — from coding agents and research tools to cybersecurity, design, media, local AI, model gateways, and data platforms[reference:64].</p>
+    </section>
+
+    <!-- 17 LEARNING -->
+    <section id="learning">
+        <h2 class="section-title"><span class="num">17</span> Learning Resources</h2>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>📘 Teach It Once</h4>
+                <p>Michael Zelbel’s book on externalizing what your AI knows into files you own — teaching it your work and rules once. Free sample chapters.</p>
+                <a href="https://leanpub.com/teachitonce" target="_blank">leanpub.com/teachitonce</a>
+            </div>
+            <div class="card">
+                <h4>📰 Agentic Development Newsletter</h4>
+                <p>Michael Zelbel writes about building with AI agents — what works and what broke.</p>
+                <a href="https://michaelzelbel.substack.com/subscribe" target="_blank">michaelzelbel.substack.com</a>
+            </div>
+            <div class="card">
+                <h4>🏛️ Awesome Antigravity</h4>
+                <p>The canonical curated list — every link opened and checked October 2026. Official resources, skill collections, single skills, spec-driven dev, memory, code intel, quota monitors, safety, multi-agent, fixes, CLI problems, guides, community.</p>
+                <a href="https://github.com/MichaelZelbel/awesome-antigravity" target="_blank">github.com/MichaelZelbel/awesome-antigravity</a>
+            </div>
+            <div class="card">
+                <h4>🧰 Awesome AI Agent Tools</h4>
+                <p>693 installable components across 9 categories: 101 skills, 194 MCPs, agent loops, subagents, hooks, plugins, prompts, tools, Claude Code mods.</p>
+                <a href="https://github.com/michielhdoteth/awesome-ai-agent-tools" target="_blank">github.com/michielhdoteth/awesome-ai-agent-tools</a>
+            </div>
+            <div class="card">
+                <h4>⚙️ AI Engineering Ecosystem</h4>
+                <p>Directory v1.16 (updated Nov 2026) — coding, research, agent frameworks, cybersecurity, design, writing, productivity, media, local AI, networking, model gateways, data platforms.</p>
+                <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem" target="_blank">github.com/sksazidahammed/ai-engineering-ecosystem</a>
+            </div>
+            <div class="card">
+                <h4>📊 AI Agent Benchmark</h4>
+                <p>80+ agents compared with SWE-Bench leaderboard, pricing, and capability matrices. Devin, Cursor, Claude Code, Copilot, and more.</p>
+                <a href="https://github.com/murataslan1/ai-agent-benchmark" target="_blank">github.com/murataslan1/ai-agent-benchmark</a>
+            </div>
+            <div class="card">
+                <h4>🛡️ Vibe-Coded Security Series</h4>
+                <p>4-part launch filter — 70 checks across secrets/auth/input, web/sessions/APIs/payments, dependencies/AI/data/infra, and logic/CI-CD/advanced risks.</p>
+                <a href="https://docs.google.com/document/d/1CTxL5T4OQstQh5yJ_cZWnC2LZU9hMHiXS6u-cBQ4lo0/mobilebasic" target="_blank">Google Doc</a>
+            </div>
+            <div class="card">
+                <h4>🌐 SEO Field Guide</h4>
+                <p>Search Console, Bing Webmaster Tools, IndexNow, sitemaps, robots.txt, meta tags, Open Graph, Core Web Vitals, and mobile optimization.</p>
+                <span class="tag">Included PDF</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18 TROUBLESHOOT -->
+    <section id="troubleshoot">
+        <h2 class="section-title"><span class="num">18</span> Troubleshooting</h2>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Symptom</th><th>Likely Cause</th><th>Fix</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>Skill not loading</td>
+                        <td>Wrong directory or missing <code>SKILL.md</code></td>
+                        <td>Verify path is exactly <code>.agents/skills/&lt;name&gt;/SKILL.md</code>. Check that the skill folder sits <em>directly</em> under <code>skills/</code>[reference:65].</td>
+                    </tr>
+                    <tr>
+                        <td>MCP tools not appearing</td>
+                        <td>Config not loaded or invalid JSON</td>
+                        <td>Validate <code>mcp_config.json</code> syntax. Check global vs workspace path. Restart Antigravity after edits[reference:66].</td>
+                    </tr>
+                    <tr>
+                        <td>Quota exhausted too fast</td>
+                        <td>High-capability model used for all tasks</td>
+                        <td>Route subagents and routine tasks to cheaper models. Install <code>agy-usage</code> or <code>quotacli</code> and set a <code>PreInvocation</code> warning hook[reference:67].</td>
+                    </tr>
+                    <tr>
+                        <td>Context window overload</td>
+                        <td>Too many active skills</td>
+                        <td>Deactivate unused skills. Follow <code>agent-overload-recovery.md</code> guidance. Prefer plugins that package skills with progressive disclosure[reference:68].</td>
+                    </tr>
+                    <tr>
+                        <td>Agent ignoring rules</td>
+                        <td>Rules not scoped correctly or hooks not firing</td>
+                        <td>Check <code>rules/AGENTS.md</code> path. Verify <code>hooks.json</code> matcher patterns. Use <code>PreToolUse</code> for hard blocks, not just rules for soft guidance.</td>
+                    </tr>
+                    <tr>
+                        <td>CLI headless action soft-denied</td>
+                        <td>Antigravity CLI can “soft-deny” a headless action requiring approval while still exiting 0 (notice only in stderr)</td>
+                        <td>Check stderr output, not just exit code. Use interactive approval for consequential actions[reference:69].</td>
+                    </tr>
+                    <tr>
+                        <td>Plugin installed but disabled</td>
+                        <td>Missing required config variables or OAuth</td>
+                        <td>Enable via <strong>Customizations → Installed</strong> (App) or <code>/plugin Installed</code> (CLI) and complete the settings dialog[reference:70].</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 19 BEST PRACTICES -->
+    <section id="best-practices">
+        <h2 class="section-title"><span class="num">19</span> Best Practices — The Ten Rules</h2>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>1. Start with a skill, not a prompt</h4>
+                <p>If you repeat a workflow twice, package it as a skill. Skills are versionable, shareable, and progressively loaded.</p>
+            </div>
+            <div class="card">
+                <h4>2. Gate completion with Stop hooks</h4>
+                <p>Require lint + tests to pass before the agent can finish a turn. Never trust “done” without verification.</p>
+            </div>
+            <div class="card">
+                <h4>3. Default-deny with PreToolUse</h4>
+                <p>Block dangerous commands, secret reads, and unapproved external calls at the hook layer — outside the model’s reasoning loop.</p>
+            </div>
+            <div class="card">
+                <h4>4. Monitor quota from day one</h4>
+                <p>Install <code>agy-usage</code> or <code>quotacli</code>. Route subagents to cheaper models. Quota resets every ~5 hours; don’t waste it.</p>
+            </div>
+            <div class="card">
+                <h4>5. Keep context lean</h4>
+                <p>Progressive disclosure is a feature, not a bug. Deactivate skills you aren’t using. Prefer plugins over loose skill folders.</p>
+            </div>
+            <div class="card">
+                <h4>6. Separate planning from execution</h4>
+                <p>Use brainstorming/grill-me skills to resolve ambiguity before code generation. Spec-driven development prevents rework.</p>
+            </div>
+            <div class="card">
+                <h4>7. Least-privilege agents</h4>
+                <p>Every subagent gets the smallest tool allowlist possible. Consequential actions require confirmation hooks.</p>
+            </div>
+            <div class="card">
+                <h4>8. Audit before you ship</h4>
+                <p>Run the 70-check security filter. Use debate-review skills on PRs. Scan for secrets in Git history and frontend bundles.</p>
+            </div>
+            <div class="card">
+                <h4>9. Cross-tool skill portability</h4>
+                <p>Use <code>.agent/skills/</code> for maximum compatibility across Claude Code, Cursor, Codex, and Antigravity.</p>
+            </div>
+            <div class="card">
+                <h4>10. Re-run the audit after meaningful changes</h4>
+                <p>Auth, data, infrastructure, dependencies, payments, and AI tools change the risk surface. Re-audit, don’t assume.</p>
+            </div>
+        </div>
+
+        <div class="callout success" style="margin-top: 28px;">
+            <p><strong>Launch standard:</strong> Ship when relevant controls are verified with evidence, not when you have simply read the checklist. If you cannot point to the code, setting, config, test, or log that proves a guardrail exists, treat it as missing.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p><strong>Antigravity-Guide-Book-V1</strong> — compiled from <a href="https://github.com/MichaelZelbel/awesome-antigravity" target="_blank">awesome-antigravity</a>, <a href="https://github.com/sksazidahammed/ai-engineering-ecosystem" target="_blank">ai-engineering-ecosystem</a>, official Antigravity docs, and community skill collections.</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;">Links verified against sources available as of compilation. Re-check repository activity and Antigravity version compatibility before production use.</p>
+    </div>
+</footer>
+
+</body>
+</html>
